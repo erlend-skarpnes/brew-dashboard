@@ -1,0 +1,2209 @@
+{
+  "x-generator": "NSwag v13.16.1.0 (NJsonSchema v10.7.2.0 (Newtonsoft.Json v13.0.0.0))",
+  "openapi": "3.0.0",
+  "info": {
+    "title": "BrewCreator API",
+    "description": "BrewCreator API",
+    "version": "v1"
+  },
+  "servers": [
+    {
+      "url": "https://api.brewcreator.com"
+    }
+  ],
+  "paths": {
+    "/api/v{version}/equipmentgroups/{iotHubGroupId}": {
+      "put": {
+        "tags": [
+          "EquipmentGroups"
+        ],
+        "operationId": "EquipmentGroups_UpdateEquipmentGroup",
+        "parameters": [
+          {
+            "name": "iotHubGroupId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "requestBody": {
+          "x-name": "model",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEquipmentGroupDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfEquipmentGroupAction"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/equipments/{id}": {
+      "get": {
+        "tags": [
+          "Equipments"
+        ],
+        "operationId": "Equipments_GetEquipment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfEquipmentDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfString"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Equipments"
+        ],
+        "operationId": "Equipments_UpdateEquipment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 3
+          }
+        ],
+        "requestBody": {
+          "x-name": "model",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdateEquipmentRequestDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfIReadOnlyCollectionOfEquipmentDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfString"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Equipments"
+        ],
+        "operationId": "Equipments_UnregisterEquipment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfBoolean"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/equipments": {
+      "get": {
+        "tags": [
+          "Equipments"
+        ],
+        "operationId": "Equipments_GetEquipments",
+        "parameters": [
+          {
+            "name": "PageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "PageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "Filters",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "$ref": "#/components/schemas/FilterQuery"
+              }
+            },
+            "x-position": 3
+          },
+          {
+            "name": "Sorts",
+            "in": "query",
+            "style": "form",
+            "explode": true,
+            "schema": {
+              "type": "array",
+              "nullable": true,
+              "items": {
+                "$ref": "#/components/schemas/SortQuery"
+              }
+            },
+            "x-position": 4
+          },
+          {
+            "name": "Logic",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/FilterLogic"
+            },
+            "x-position": 5
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 6
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfIReadOnlyCollectionOfEquipmentDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfString"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Equipments"
+        ],
+        "operationId": "Equipments_RegisterEquipment",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "requestBody": {
+          "x-name": "model",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RegisterEquipmentRequestDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfIReadOnlyCollectionOfEquipmentDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/equipments/{id}/calibrate": {
+      "put": {
+        "tags": [
+          "Equipments"
+        ],
+        "operationId": "Equipments_Calibrate",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/equipments/{id}/telemetrydata": {
+      "get": {
+        "tags": [
+          "Equipments"
+        ],
+        "operationId": "Equipments_GetEquipmentTelemetryData",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "x-position": 3
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 4
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfIReadOnlyCollectionOfGraphic"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/equipments/{id}/telemetrylog": {
+      "get": {
+        "tags": [
+          "Equipments"
+        ],
+        "operationId": "Equipments_GetEquipmentTelemetryLog",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          },
+          {
+            "name": "startTime",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "endTime",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "x-position": 3
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 4
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfIReadOnlyCollectionOfTelemetryData"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/equipments/{id}/getstates": {
+      "get": {
+        "tags": [
+          "Equipments"
+        ],
+        "operationId": "Equipments_GetStates",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfEquipmentStateDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfString"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/equipments/{id}/firmware/update": {
+      "post": {
+        "tags": [
+          "Equipments"
+        ],
+        "operationId": "Equipments_UpdateFirmware",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "guid"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/settings": {
+      "get": {
+        "tags": [
+          "Settings"
+        ],
+        "operationId": "Settings_Get",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Settings"
+        ],
+        "operationId": "Settings_Update",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "requestBody": {
+          "x-name": "model",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SettingDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/settings/translation/{language}": {
+      "get": {
+        "tags": [
+          "Settings"
+        ],
+        "operationId": "Settings_Translation",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Settings"
+        ],
+        "operationId": "Settings_SetTranslation",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/settings/news/{language}": {
+      "get": {
+        "tags": [
+          "Settings"
+        ],
+        "operationId": "Settings_News",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Settings"
+        ],
+        "operationId": "Settings_SetNews",
+        "parameters": [
+          {
+            "name": "language",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "nullable": true
+            },
+            "x-position": 1
+          },
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "file": {
+                    "type": "string",
+                    "format": "binary",
+                    "nullable": true
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/settings/activeusers": {
+      "get": {
+        "tags": [
+          "Settings"
+        ],
+        "operationId": "Settings_GetActiveUsers",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v{version}/usersettings": {
+      "get": {
+        "tags": [
+          "UserSettings"
+        ],
+        "operationId": "UserSettings_GetSetting",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfUserSettingDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfString"
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "UserSettings"
+        ],
+        "operationId": "UserSettings_CreateUpdateSetting",
+        "parameters": [
+          {
+            "name": "version",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "x-position": 2
+          }
+        ],
+        "requestBody": {
+          "x-name": "model",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateUpdateUserSettingDto"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfUserSettingDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ResponseOfString"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ResponseOfEquipmentGroupAction": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "succeeded": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "nullable": true
+          },
+          "data": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EquipmentGroupAction"
+              }
+            ]
+          }
+        }
+      },
+      "EquipmentGroupAction": {
+        "allOf": [
+          {
+            "$ref": "#/components/schemas/EntityOfGuid"
+          },
+          {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "equipmentGroupIotHubGroupId": {
+                "type": "string",
+                "nullable": true
+              },
+              "userId": {
+                "type": "string",
+                "format": "guid"
+              },
+              "isConfirmedGuide": {
+                "type": "boolean"
+              }
+            }
+          }
+        ]
+      },
+      "EntityOfGuid": {
+        "type": "object",
+        "x-abstract": true,
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "deletedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          }
+        }
+      },
+      "ResponseOfString": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "succeeded": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "nullable": true
+          },
+          "data": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateEquipmentGroupDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "isConfirmedGuide": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ResponseOfEquipmentDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "succeeded": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "nullable": true
+          },
+          "data": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EquipmentDto"
+              }
+            ]
+          }
+        }
+      },
+      "EquipmentDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "iotHubBrewEquipmentId": {
+            "type": "string",
+            "nullable": true
+          },
+          "iotHubBrewEquipmentGroupId": {
+            "type": "string",
+            "nullable": true
+          },
+          "userId": {
+            "type": "string",
+            "format": "guid",
+            "nullable": true
+          },
+          "owner": {
+            "type": "string",
+            "nullable": true
+          },
+          "brewName": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "webhook": {
+            "type": "string",
+            "nullable": true
+          },
+          "color": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Color"
+              }
+            ]
+          },
+          "isLoggingData": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "isRegulatingTemperature": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "actualTemperature": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "setTemperature": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "fanSpeed": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "abv": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "ebc": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ibu": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "fg": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "og": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "sg": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "volume": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "battery": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "beerStyle": {
+            "type": "string",
+            "nullable": true
+          },
+          "lProcess": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LProcess"
+              }
+            ]
+          },
+          "hProcess": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/HProcess"
+              }
+            ]
+          },
+          "fermented": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/FermentedType"
+              }
+            ]
+          },
+          "brewDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "equipmentId": {
+            "type": "string",
+            "format": "guid",
+            "nullable": true
+          },
+          "isConfirmedGuide": {
+            "type": "boolean"
+          },
+          "activityTimeSession": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lastActivityTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "connectedEquipments": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          "deviceTwinState": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/DeviceTwinState"
+              }
+            ]
+          }
+        }
+      },
+      "Color": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "None",
+          "Red",
+          "Blue",
+          "Green",
+          "Pink",
+          "Yellow",
+          "Teal",
+          "White",
+          "TiltRed",
+          "TiltGreen",
+          "TiltBlack",
+          "TiltPurple",
+          "TiltOrange",
+          "TiltBlue",
+          "TiltYellow",
+          "TiltPink"
+        ],
+        "enum": [
+          "None",
+          "Red",
+          "Blue",
+          "Green",
+          "Pink",
+          "Yellow",
+          "Teal",
+          "White",
+          "TiltRed",
+          "TiltGreen",
+          "TiltBlack",
+          "TiltPurple",
+          "TiltOrange",
+          "TiltBlue",
+          "TiltYellow",
+          "TiltPink"
+        ]
+      },
+      "LProcess": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Ready",
+          "Cooling",
+          "Heating",
+          "Idle"
+        ],
+        "enum": [
+          "Ready",
+          "Cooling",
+          "Heating",
+          "Idle"
+        ]
+      },
+      "HProcess": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Stop",
+          "Start"
+        ],
+        "enum": [
+          "Stop",
+          "Start"
+        ]
+      },
+      "FermentedType": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "None",
+          "Top",
+          "Bottom"
+        ],
+        "enum": [
+          "None",
+          "Top",
+          "Bottom"
+        ]
+      },
+      "DeviceTwinState": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "deviceId": {
+            "type": "string",
+            "nullable": true
+          },
+          "deviceType": {
+            "type": "string",
+            "nullable": true
+          },
+          "region": {
+            "type": "string",
+            "nullable": true
+          },
+          "desiredSwVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "desiredHwVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "reportedSwVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "reportedHwVersion": {
+            "type": "string",
+            "nullable": true
+          },
+          "dataLog": {
+            "type": "boolean"
+          },
+          "color": {
+            "$ref": "#/components/schemas/Color"
+          },
+          "hProcess": {
+            "$ref": "#/components/schemas/HProcess"
+          },
+          "lProcess": {
+            "$ref": "#/components/schemas/LProcess"
+          },
+          "connectionState": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/DeviceConnectionState"
+              }
+            ]
+          },
+          "lastActivityTime": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "swUpdateStatus": {
+            "type": "string",
+            "nullable": true
+          },
+          "swUpdateStatusRef": {
+            "type": "string",
+            "nullable": true
+          },
+          "swUpdateStatusMessage": {
+            "type": "string",
+            "nullable": true
+          },
+          "updateAvailable": {
+            "type": "boolean"
+          },
+          "swUpdateInProgress": {
+            "type": "boolean"
+          },
+          "swUpdateFailed": {
+            "type": "boolean"
+          }
+        }
+      },
+      "DeviceConnectionState": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Disconnected",
+          "Connected"
+        ],
+        "enum": [
+          "Disconnected",
+          "Connected"
+        ]
+      },
+      "ResponseOfIReadOnlyCollectionOfEquipmentDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "succeeded": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/EquipmentDto"
+            }
+          }
+        }
+      },
+      "FilterQuery": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "operator": {
+            "$ref": "#/components/schemas/FilterOperator"
+          },
+          "field": {
+            "type": "string",
+            "nullable": true
+          },
+          "value": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "FilterOperator": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Equal",
+          "NotEqual",
+          "Contains",
+          "DoesNotContain",
+          "EndsWith",
+          "StartsWith",
+          "GreaterThanOrEqual",
+          "LessThanOrEqual",
+          "LessThan",
+          "GreaterThan"
+        ],
+        "enum": [
+          "Equal",
+          "NotEqual",
+          "Contains",
+          "DoesNotContain",
+          "EndsWith",
+          "StartsWith",
+          "GreaterThanOrEqual",
+          "LessThanOrEqual",
+          "LessThan",
+          "GreaterThan"
+        ]
+      },
+      "SortQuery": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "direction": {
+            "$ref": "#/components/schemas/SortDirection"
+          },
+          "field": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "SortDirection": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "Ascending",
+          "Descending"
+        ],
+        "enum": [
+          "Ascending",
+          "Descending"
+        ]
+      },
+      "FilterLogic": {
+        "type": "string",
+        "description": "",
+        "x-enumNames": [
+          "And",
+          "Or"
+        ],
+        "enum": [
+          "And",
+          "Or"
+        ]
+      },
+      "RegisterEquipmentRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "iotHubId": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "UpdateEquipmentRequestDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "owner": {
+            "type": "string",
+            "nullable": true
+          },
+          "brewName": {
+            "type": "string",
+            "nullable": true
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "color": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/Color"
+              }
+            ]
+          },
+          "isLoggingData": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "isRegulatingTemperature": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "isActive": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "actualTemperature": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "setTemperature": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "fanSpeed": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "abv": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "ebc": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ibu": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "fg": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "og": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "sg": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "volume": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "battery": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "beerStyle": {
+            "type": "string",
+            "nullable": true
+          },
+          "lProcess": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/LProcess"
+              }
+            ]
+          },
+          "hProcess": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/HProcess"
+              }
+            ]
+          },
+          "fermented": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/FermentedType"
+              }
+            ]
+          },
+          "brewDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "connectedEquipments": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string",
+              "format": "guid"
+            }
+          },
+          "webhook": {
+            "type": "string",
+            "nullable": true
+          }
+        }
+      },
+      "ResponseOfBoolean": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "succeeded": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "nullable": true
+          },
+          "data": {
+            "type": "boolean"
+          }
+        }
+      },
+      "ResponseOfIReadOnlyCollectionOfGraphic": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "succeeded": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Graphic"
+            }
+          }
+        }
+      },
+      "Graphic": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/Coordinate"
+            }
+          },
+          "min": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "max": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          }
+        }
+      },
+      "Coordinate": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "x": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "y": {
+            "nullable": true
+          }
+        }
+      },
+      "ResponseOfIReadOnlyCollectionOfTelemetryData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "succeeded": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "nullable": true
+          },
+          "data": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/TelemetryData"
+            }
+          }
+        }
+      },
+      "TelemetryData": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "selectGrav": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "dGrav": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "tGrav": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "tAct": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "tSet": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "hProcess": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "lProcess": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "time": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "mutime": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "err": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "colorId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "vBat": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "tRate": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "og": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "fg": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "abv": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "rst": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "ResponseOfEquipmentStateDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "succeeded": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "nullable": true
+          },
+          "data": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/EquipmentStateDto"
+              }
+            ]
+          }
+        }
+      },
+      "EquipmentStateDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "og": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "sg": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          },
+          "actualTemperature": {
+            "type": "number",
+            "format": "float",
+            "nullable": true
+          }
+        }
+      },
+      "SettingDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "activityTimeSession": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 1440.0,
+            "minimum": 1.0,
+            "nullable": true
+          },
+          "getStatesTimeout": {
+            "type": "integer",
+            "format": "int32",
+            "maximum": 60.0,
+            "minimum": 1.0,
+            "nullable": true
+          }
+        }
+      },
+      "ResponseOfUserSettingDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "succeeded": {
+            "type": "boolean"
+          },
+          "message": {
+            "type": "string",
+            "nullable": true
+          },
+          "errors": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "metadata": {
+            "nullable": true
+          },
+          "data": {
+            "nullable": true,
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/UserSettingDto"
+              }
+            ]
+          }
+        }
+      },
+      "UserSettingDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "guid"
+          },
+          "userId": {
+            "type": "string",
+            "nullable": true
+          },
+          "showMergingBatchInfoPopup": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "utcTimeOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      },
+      "CreateUpdateUserSettingDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "showMergingBatchInfoPopup": {
+            "type": "boolean",
+            "nullable": true
+          },
+          "utcTimeOffset": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "oauth2",
+        "flows": {
+          "authorizationCode": {
+            "authorizationUrl": "https://identity.brewcreator.com/connect/authorize",
+            "tokenUrl": "https://identity.brewcreator.com/connect/token",
+            "scopes": {
+              "openid": "Openid Scope",
+              "offline_access": "OfflineAccess Scope",
+              "email": "Email Scope",
+              "profile": "Profile Scope",
+              "roles": "Roles Scope",
+              "phone": "Phone Scope",
+              "brewer-access": "API Access Scope"
+            }
+          }
+        }
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": []
+    }
+  ]
+}
