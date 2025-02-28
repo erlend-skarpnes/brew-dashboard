@@ -1,17 +1,21 @@
 <script lang="ts">
 	import type { EquipmentDto } from '$lib/brew-api';
 	import { Chart } from 'flowbite-svelte';
+	import { getContext } from 'svelte';
+	import type { Writable } from 'svelte/store';
 
 	// const { data }: { data: EquipmentDto } = $props();
 
-	const data = {
-		fg: 1,
-		og: 1.08,
-		sg: 1.0532
-	} satisfies EquipmentDto;
+	const data = getContext('deviceData') satisfies Writable<EquipmentDto>;
 
-	let diff = (data?.og ?? 0) - (data?.fg ?? 0);
-	let progress = (data?.og ?? 0) - (data?.sg ?? 0);
+	// const data = {
+	// 	fg: 1,
+	// 	og: 1.08,
+	// 	sg: 1.0532
+	// } satisfies EquipmentDto;
+
+	let diff = ($data?.og ?? 0) - ($data?.fg ?? 0);
+	let progress = ($data?.og ?? 0) - ($data?.sg ?? 0);
 
 	let percentage = Math.round((progress / diff) * 100);
 

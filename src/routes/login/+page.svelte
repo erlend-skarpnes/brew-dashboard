@@ -14,7 +14,7 @@
 		<Label for="password">Passord</Label>
 		<Input type="password" name="password" />
 		</div>
-		<Button color="green" type="submit">Log inn</Button>
+		<Button color="green" type="submit">Logg inn</Button>
 	</form>
 	</Card>
 </div>

@@ -1,9 +1,7 @@
 import { json } from '@sveltejs/kit';
 import { Api } from '$lib/brew-api';
 
-export async function POST({ request, cookies }) {
-	const { isLogging } = await request.json();
-
+export async function GET({ cookies }) {
 	const token = cookies.get('token');
 	const deviceId = cookies.get('deviceId');
 
@@ -13,11 +11,12 @@ export async function POST({ request, cookies }) {
 
 	const client = new Api({baseApiParams: {headers: {"Authorization": `Bearer ${token}`}}});
 
-	const apiResponse = await client.api.equipmentsUpdateEquipment(deviceId, {isLoggingData: isLogging});
+	const apiResponse = await client.api.equipmentsGetStates(deviceId);
+
 
 	if (apiResponse.ok) {
-		const isLoggingResponse = apiResponse.data.data;
-		return json(isLoggingResponse, {status: 200});
+		const sg = apiResponse.data.data?.sg;
+		return json({ sg }, {status: 200});
 	}
 
 	return new Response(null, {status: 500});
