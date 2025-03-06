@@ -6,7 +6,7 @@
 
 	const { data, legend } = $props();
 
-	const options = {
+	const options = $derived({
 		chart: {
 			type: 'line',
 			width: '100%',
@@ -31,10 +31,7 @@
 		tooltip: {
 			x: { format: 'hh:mm - dd. MMM' }
 		},
-		dataLabels: {
-
-		}
-	} satisfies ApexOptions;
+	}) satisfies ApexOptions;
 </script>
 
 <Chart options={options} />
