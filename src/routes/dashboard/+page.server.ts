@@ -1,6 +1,4 @@
-import type { PageServerLoad } from './$types';
-import { redirect } from '@sveltejs/kit';
-import { Api, type EquipmentDto } from '$lib/brew-api';
+import { Api } from '$lib/brew-api';
 import type { Actions } from './$types';
 
 export const actions = {

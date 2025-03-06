@@ -4,7 +4,6 @@
 	import { writable } from 'svelte/store';
 
 	let { children, data } = $props();
-	console.dir("from layout", data)
 
 	setContext("deviceData", writable(data.deviceStatus));
 	setContext("graphData", writable(data.graphData));

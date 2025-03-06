@@ -8,8 +8,6 @@
 
 	let data = getContext('deviceData') satisfies Writable<EquipmentDto>;
 
-	console.log('from context', data);
-
 	let isLogging = $derived($data.isLoggingData ?? undefined);
 	let isDeviceActive = $derived($data.deviceTwinState?.connectionState === 'Connected');
 
@@ -24,13 +22,11 @@
 		stopLoading = true;
 		await fetch('/api/stop-logging', {
 			method: 'POST',
-			body: JSON.stringify({ isLogging: false }),
 			headers: {
 				'Content-Type': 'application/json'
 			}
 		}).then(res => res.json())
 			.then(res => {
-				console.log('setting data', res);
 				data.set(res);
 			})
 			.catch(err => console.error(err))
@@ -60,7 +56,6 @@
 			}
 		}).then(res => res.json())
 			.then(res => {
-				console.log('setting data', res);
 				data.set(res);
 			})
 			.catch(err => console.error(err))

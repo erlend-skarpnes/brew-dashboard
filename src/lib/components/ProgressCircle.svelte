@@ -19,8 +19,6 @@
 
 	let percentage = Math.round((progress / diff) * 100);
 
-	console.log({diff, progress, percentage})
-
 	let options = {
 		chart: {
 			height: 250,
