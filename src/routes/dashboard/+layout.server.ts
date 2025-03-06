@@ -1,9 +1,16 @@
 import type { LayoutServerLoad } from '../../../.svelte-kit/types/src/routes/dashboard/$types';
 import { redirect } from '@sveltejs/kit';
-import { Api } from '$lib/brew-api';
+import { Api, type Coordinate } from '$lib/brew-api';
+import { getTokenFromCookies } from '$lib/auth/token';
+
+export interface GraphData {
+	alcohol: Coordinate[],
+	temperature: Coordinate[],
+	density: Coordinate[],
+}
 
 export const load: LayoutServerLoad = async ({ cookies }) => {
-	const token = cookies.get('token');
+	const token = await getTokenFromCookies(cookies);
 
 	if (!token) {
 		redirect(307, "/login");
