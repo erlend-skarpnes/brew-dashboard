@@ -4,6 +4,7 @@
 	import { getContext } from 'svelte';
 	import type { Writable } from 'svelte/store';
 	import type { ApexOptions } from 'apexcharts';
+	import colors from 'tailwindcss/colors'
 
 	const data = getContext('deviceData') satisfies Writable<EquipmentDto>;
 
@@ -14,17 +15,17 @@
 
 	let options = $derived({
 		chart: {
-			height: 250,
+			height: 350,
 			type: "radialBar",
 		},
 
 		series: [percentage],
-		colors: ["#20E647"],
+		colors: [colors.green[600]],
 		plotOptions: {
 			radialBar: {
 				hollow: {
 					margin: 0,
-					size: "70%",
+					size: "65%",
 				},
 				track: {
 					dropShadow: {
@@ -38,24 +39,15 @@
 				dataLabels: {
 					name: {
 						offsetY: -10,
-						color: "#fff",
-						fontSize: "13px"
+						color: colors.gray[300],
+						fontSize: "16px"
 					},
 					value: {
-						color: "#fff",
+						color: colors.gray[300],
 						fontSize: "30px",
 						show: true
 					}
 				}
-			}
-		},
-		fill: {
-			type: "gradient",
-			gradient: {
-				shade: "dark",
-				type: "vertical",
-				gradientToColors: ["#87D4F9"],
-				stops: [0, 100]
 			}
 		},
 		stroke: {
