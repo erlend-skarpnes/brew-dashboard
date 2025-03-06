@@ -1,13 +1,14 @@
 import { json } from '@sveltejs/kit';
 import { Api } from '$lib/brew-api';
+import { getTokenFromCookies } from '$lib/auth/token';
 
 export async function POST({ request, cookies }) {
 	const { og, fg } = await request.json();
 
-	const token = cookies.get('token');
+	const token = await getTokenFromCookies(cookies);
 	const deviceId = cookies.get('deviceId');
 
-	if (!deviceId) {
+	if (!deviceId || !token) {
 		return new Response(null, {status: 500})
 	}
 

@@ -1,3 +1,5 @@
+import type { Cookies } from '@sveltejs/kit';
+
 interface Token {
 	access_token: string;
 	refresh_token: string;
@@ -133,4 +135,37 @@ export const login = async (username: string, password: string): Promise<Token> 
 
 
 	return token satisfies Token;
+}
+
+export const getTokenFromRefresh = async (refreshToken: string) => {
+	const tokenFormData = new FormData();
+	tokenFormData.append('grant_type', "refresh_token");
+	tokenFormData.append('client_id', "brew-creator");
+	tokenFormData.append('redirect_uri', "https://brewcreator.com");
+	tokenFormData.append('refresh_token', refreshToken);
+
+	const token = await fetch("https://identity.brewcreator.com/connect/token", {
+		method: 'POST',
+		headers: {
+			"Content-Type": "application/x-www-form-urlencoded",
+		},
+		redirect: "manual",
+		body: new URLSearchParams(tokenFormData)
+	}).then(async response => {
+		return await response.json();
+	});
+
+	return token satisfies Token;
+}
+
+export const getTokenFromCookies = async (cookies: Cookies) => {
+	if (cookies.get('token')) return cookies.get('token');
+	if (cookies.get('refresh_token')) {
+		const newToken = await getTokenFromRefresh(cookies.get('refresh_token'));
+		cookies.set('token', newToken.access_token, { path: "/", maxAge: newToken.expires_in });
+		cookies.set('refresh_token', newToken.refresh_token, { path: "/", maxAge: 60*60*24 })
+		return newToken.access_token;
+	}
+
+	return undefined;
 }
