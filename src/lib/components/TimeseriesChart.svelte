@@ -3,6 +3,7 @@
 	import { Chart } from 'flowbite-svelte';
 	import type { ApexOptions } from 'apexcharts';
 	import type { Coordinate } from '$lib/brew-api';
+	import colors from 'tailwindcss/colors';
 
 	const { data, legend } = $props();
 
@@ -24,7 +25,15 @@
 			labels: {
 				format: 'hh:mm',
 				style: {
-					colors: '#fff',
+					colors: colors.gray[300],
+				}
+			}
+		},
+		yaxis: {
+			decimalsInFloat: 1,
+			labels: {
+				style: {
+					colors: colors.gray[300]
 				}
 			}
 		},
