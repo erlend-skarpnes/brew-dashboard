@@ -9,6 +9,7 @@
 	import type { Writable } from 'svelte/store';
 	import type { EquipmentDto } from '$lib/brew-api';
 	import type { GraphData } from './+layout.server';
+	import BatteryIndicator from '$lib/components/BatteryIndicator.svelte';
 
 	const data = getContext("deviceData") satisfies Writable<EquipmentDto>;
 	const graphData = getContext("graphData") satisfies Writable<GraphData>;
@@ -71,6 +72,7 @@
 
 	<Card size="lg" class="flex justify-center">
 		<ProgressCircle />
+		<BatteryIndicator />
 	</Card>
 
 	<Card size="xl" class="col-span-2">
