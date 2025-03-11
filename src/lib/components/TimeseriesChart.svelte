@@ -23,7 +23,7 @@
 		xaxis: {
 			type: 'datetime',
 			labels: {
-				format: 'hh:mm',
+
 				style: {
 					colors: colors.gray[300],
 				}
@@ -40,6 +40,13 @@
 		tooltip: {
 			x: { format: 'hh:mm - dd. MMM' }
 		},
+		grid: {
+			xaxis: {
+				lines: {
+					show: true,
+				}
+			}
+		}
 	}) satisfies ApexOptions;
 </script>
 
