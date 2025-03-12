@@ -19,5 +19,6 @@ COPY --from=builder /app/package.json .
 EXPOSE 3000
 
 ENV NODE_ENV=production
+ENV ORIGIN=http://nixos:8080
 
 CMD [ "node", "build" ]
