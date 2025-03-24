@@ -13,6 +13,7 @@
 
 	const data = getContext("deviceData") satisfies Writable<EquipmentDto>;
 	const graphData = getContext("graphData") satisfies Writable<GraphData>;
+	const errorMessage = getContext("errorMessage") satisfies Writable<string>;
 
 	if (browser) {
 		let interval: number | undefined;
@@ -27,7 +28,10 @@
 					data.set(res.deviceStatus);
 					graphData.set(res.graphData);
 				})
-				.catch(err => console.error(err))
+				.catch(err => {
+					errorMessage.set("Something went wrong, check console")
+					console.error(err)
+				})
 		}
 
 		// Set up the polling when the window is active
