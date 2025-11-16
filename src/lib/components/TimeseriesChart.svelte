@@ -5,7 +5,7 @@
 	import type { Coordinate } from '$lib/brew-api';
 	import colors from 'tailwindcss/colors';
 
-	const { data, legend } = $props();
+	const { data, legend, decimals = 1 } = $props();
 
 	const options = $derived({
 		chart: {
@@ -30,7 +30,7 @@
 			}
 		},
 		yaxis: {
-			decimalsInFloat: 1,
+			decimalsInFloat: decimals,
 			labels: {
 				style: {
 					colors: colors.gray[300]

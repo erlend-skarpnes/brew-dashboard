@@ -86,7 +86,7 @@
 
 	<Card size="xl" class="col-span-2">
 		<h1>Tetthet</h1>
-		<TimeseriesChart data={$graphData.density} legend="Tetthet" />
+		<TimeseriesChart data={$graphData.density} legend="Tetthet" decimals={3} />
 	</Card>
 
 	<Card size="xl" class="col-span-2">
