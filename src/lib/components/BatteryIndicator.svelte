@@ -9,10 +9,12 @@
 	const data = getContext('deviceData') satisfies Writable<EquipmentDto>;
 	const currentBattery = $data?.battery || 0;
 
-	const maxBattery = 4020;
-	const diff = maxBattery - currentBattery;
 
-	let percentage = 100 - Math.round(diff / 12.5) // One percentage point is observed to equal about 12.5 units
+	const maxBattery = 4070;
+	const diff = maxBattery - currentBattery;
+	console.log({ currentBattery, maxBattery });
+
+	let percentage = Math.min(100 - Math.round(diff / 12.5), 100) // One percentage point is observed to equal about 12.5 units
 
 	let iconColor = undefined;
 
