@@ -15,6 +15,10 @@
 	const graphData = getContext("graphData") satisfies Writable<GraphData>;
 	const errorMessage = getContext("errorMessage") satisfies Writable<string>;
 
+	const lastTemp = $derived($graphData.temperature.pop()?.y ?? 0) as number
+	const lastDensity = $derived($graphData.density.pop()?.y ?? 0) as number
+	const lastAlcohol = $derived($graphData.alcohol.pop()?.y ?? 0) as number
+
 	if (browser) {
 		let interval: number | undefined;
 		async function refreshData() {
@@ -80,17 +84,17 @@
 	</Card>
 
 	<Card size="xl" class="col-span-2">
-		<h1>Temperatur</h1>
+		<h1>Temperatur - {lastTemp.toFixed(1)}°</h1>
 		<TimeseriesChart data={$graphData.temperature} legend="Temperatur" />
 	</Card>
 
 	<Card size="xl" class="col-span-2">
-		<h1>Tetthet</h1>
+		<h1>Tetthet - {lastDensity.toFixed(3)}</h1>
 		<TimeseriesChart data={$graphData.density} legend="Tetthet" decimals={3} />
 	</Card>
 
 	<Card size="xl" class="col-span-2">
-		<h1>Alkoholprosent</h1>
+		<h1>Alkoholprosent - {lastAlcohol.toFixed(2)}%</h1>
 		<TimeseriesChart data={$graphData.alcohol} legend="Alkoholprosent" />
 	</Card>
 </div>
