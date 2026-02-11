@@ -41,7 +41,7 @@
 			}
 		},
 		tooltip: {
-			x: { format: 'hh:mm - dd. MMM' }
+			x: { format: 'HH:mm - dd. MMM' }
 		},
 		grid: {
 			xaxis: {
