@@ -9,9 +9,11 @@
 
 	const options = $derived({
 		chart: {
+			id: legend,
 			type: 'line',
 			width: '100%',
-			height: '400px'
+			height: '400px',
+			group: "timeseries"
 		},
 		stroke: {
 			curve: 'smooth'
@@ -32,6 +34,7 @@
 		yaxis: {
 			decimalsInFloat: decimals,
 			labels: {
+				minWidth: 40,
 				style: {
 					colors: colors.gray[300]
 				}
