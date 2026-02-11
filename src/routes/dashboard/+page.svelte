@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Card } from 'flowbite-svelte';
+	import { Card, Checkbox } from 'flowbite-svelte';
 	import TimeseriesChart from '$lib/components/TimeseriesChart.svelte';
 	import BrewController from '$lib/components/BrewController.svelte';
 	import ProgressCircle from '$lib/components/ProgressCircle.svelte';
@@ -18,6 +18,8 @@
 	const lastTemp = $derived($graphData.temperature.pop()?.y ?? 0) as number
 	const lastDensity = $derived($graphData.density.pop()?.y ?? 0) as number
 	const lastAlcohol = $derived($graphData.alcohol.pop()?.y ?? 0) as number
+
+	let liveData = $state(false)
 
 	if (browser) {
 		let interval: number | undefined;
@@ -54,14 +56,20 @@
 		function handleVisibilityChange() {
 			if (document.hidden) {
 				stopPolling();
-			} else {
+			}
+			else if (liveData) {
 				startPolling();
 			}
 		}
 
+		$effect(() => {
+			if (liveData) startPolling()
+			else stopPolling()
+		})
+
 		onMount(() => {
 			document.addEventListener('visibilitychange', handleVisibilityChange);
-			if (!document.hidden) {
+			if (!document.hidden && liveData) {
 				startPolling(); // Start polling if the window is already active when mounted
 			}
 		});
@@ -79,6 +87,7 @@
 	</Card>
 
 	<Card size="lg" class="flex justify-center">
+		<Checkbox bind:checked={liveData}>Live data</Checkbox>
 		<ProgressCircle />
 		<BatteryIndicator />
 	</Card>
